@@ -1,0 +1,19 @@
+.insights-page {
+  padding: 2rem;
+  max-width: 600px;
+  margin: auto;
+}
+
+.insights-page h1 {
+  text-align: center;
+}
+
+.insights-page ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+.insights-page li {
+  margin: 1rem 0;
+}

@@ -1,0 +1,206 @@
+/* tasks.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #c850c0, #4158d0);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.task-page {
+  max-width: 700px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.task-page h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.task-page h2 {
+  text-align: center;
+  font-weight: 400;
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.task-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-page li {
+  background: #f4f4f4;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.task-page li:hover {
+  transform: scale(1.02);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 auto;
+  min-width: 200px;
+  overflow-wrap: anywhere;
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.task-page button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.task-page button:hover {
+  opacity: 0.9;
+}
+
+.task-page .add-button {
+  background-color: #d8eaff;
+  color: white;
+}
+
+.task-page .add-button:hover {
+  background-color: #92bfff;
+}
+
+.task-page .delete-button {
+  background-color: #e1e1e1;
+  color: white;
+}
+
+.task-page .delete-button:hover {
+  background-color: #c1c1c1;
+}
+
+.task-page .update-button {
+  background-color: #ffd898;
+  color: white;
+}
+.task-page .update-button:hover {
+  background-color: #ffb572;
+}
+
+.task-page input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  flex: 1;
+  box-sizing: border-box;
+}
+
+.task-input-area {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+/* לב */
+.heart-icon {
+  cursor: pointer;
+  font-size: 1.4rem;
+  user-select: none;
+}
+
+/* ידית גרירה */
+.drag-handle {
+  cursor: grab;
+  user-select: none;
+  font-size: 1.2rem;
+  color: #888;
+  padding: 0 4px;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.drag-handle:hover {
+  background: #e8e8e8;
+  color: #555;
+}
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+.drag-note{
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+/* רספונסיביות למסכים קטנים */
+@media (max-width: 600px) {
+  .task-page {
+    margin: 1rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .task-page h1 {
+    font-size: 2rem;
+  }
+
+  .task-left {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .task-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .task-input-area {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-page input {
+    width: 100%;
+  }
+
+  .task-page .add-button {
+    width: 100%;
+  }
+}
+
+/* משימות שהושלמו – טקסט בהיר יותר */
+.task-left .completed {
+  color: #aaa;
+}
+.task-left .completed .drag-handle {
+  color: #aaa;
+}

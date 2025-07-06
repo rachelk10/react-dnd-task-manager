@@ -1,0 +1,32 @@
+.home-page {
+  text-align: center;
+  padding: 2rem;
+}
+h1 {
+  color: #8fcbff;
+}
+
+.navigation-buttons {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+button {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  background-color: #ff84d8;
+  color: white;
+}
+
+button:hover {
+  background-color: #bac6ff;
+}
+
+p{
+    text-align: center;
+}
