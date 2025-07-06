@@ -1,6 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import type { DragEndEvent } from '@dnd-kit/core';
 
 
 import {
@@ -47,10 +48,10 @@ export default function StatsPage() {
     setTasks([...tasks, { id: uuidv4(), text: newTaskText, completed: false }]);
     setNewTaskText('');
   };
-  const deleteTask  = (id: string) => setTasks(tasks.filter(t => t.id !== id));
-  const toggleDone  = (id: string) =>
+  const deleteTask = (id: string) => setTasks(tasks.filter(t => t.id !== id));
+  const toggleDone = (id: string) =>
     setTasks(tasks.map(t => t.id === id ? { ...t, completed: !t.completed } : t));
-  const updateTask  = (id: string) => {
+  const updateTask = (id: string) => {
     const t = tasks.find(t => t.id === id); if (!t) return;
     const txt = prompt('Update task text:', t.text);
     if (txt && txt.trim()) setTasks(tasks.map(task =>
@@ -58,7 +59,7 @@ export default function StatsPage() {
   };
 
   /* החלפת מיקומים לאחר גרירה */
-  const handleDragEnd = (event: any) => {
+  const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over || active.id === over.id) return;
     const oldIndex = tasks.findIndex(t => t.id === active.id);
@@ -128,27 +129,27 @@ function SortableItem({
   };
 
   return (
-<li ref={setNodeRef} style={style}>
-  <div className="task-left">
-    {/* אזור הגרירה בלבד */}
-    <span className="drag-handle" {...attributes} {...listeners} title="Drag to reorder">⠿</span>
+    <li ref={setNodeRef} style={style}>
+      <div className="task-left">
+        {/* אזור הגרירה בלבד */}
+        <span className="drag-handle" {...attributes} {...listeners} title="Drag to reorder">⠿</span>
 
-    <span className="heart-icon" onClick={onToggle}>
-      {task.completed ? '🩷' : '🖤'}
-    </span>
-    <span style={{
-    color: task.completed ? '#aaa' : 'black',
-    textDecoration: task.completed ? 'line-through' : 'none',
-  }}>
-      {task.text}
-    </span>
-  </div>
+        <span className="heart-icon" onClick={onToggle}>
+          {task.completed ? '🩷' : '🖤'}
+        </span>
+        <span style={{
+          color: task.completed ? '#aaa' : 'black',
+          textDecoration: task.completed ? 'line-through' : 'none',
+        }}>
+          {task.text}
+        </span>
+      </div>
 
-  <div className="task-actions">
-    <button className="delete-button" onClick={onDelete}>🗑️</button>
-    <button className="update-button" onClick={onUpdate}>✏️</button>
-  </div>
-</li>
+      <div className="task-actions">
+        <button className="delete-button" onClick={onDelete}>🗑️</button>
+        <button className="update-button" onClick={onUpdate}>✏️</button>
+      </div>
+    </li>
 
   );
 }
